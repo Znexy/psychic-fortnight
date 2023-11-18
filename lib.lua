@@ -1,27 +1,3 @@
-local guiFrame = G2L["2"] 
-local dragging = false
-local offset = Vector2.new()
-
-
-guiFrame.InputBegan:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = true
-        offset = input.Position - guiFrame.Position
-    end
-end)
-
-
-guiFrame.InputChanged:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseMovement and dragging then
-        guiFrame.Position = UDim2.new(0, input.Position.X - offset.X, 0, input.Position.Y - offset.Y)
-    end
-end)
-
-guiFrame.InputEnded:Connect(function(input)
-    if input.UserInputType == Enum.UserInputType.MouseButton1 then
-        dragging = false
-    end
-end)
 
 -- Instances: 19 | Scripts: 0 | Modules: 0
 local G2L = {};
